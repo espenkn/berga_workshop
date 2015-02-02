@@ -12,7 +12,7 @@ function Dash()
 
     require_once($app_path . '/layouts/dash.template.php');
   
-    $context['template'] = 'LandingPage';
+    $context['template'] = 'landingpage';
         
 }
 

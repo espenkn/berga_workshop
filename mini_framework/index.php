@@ -2,9 +2,28 @@
 
 
 error_reporting(E_ALL);
-
-
 $app_path = dirname(__FILE__);
+
+$app_url = dirname($_SERVER["SCRIPT_NAME"]) . '/index.php';
+
+
+
+require_once($app_path . '/db_config.php');
+
+$db = new mysqli(
+    $db_config['host'],
+    $db_config['username'],
+    $db_config['password'],
+    $db_config['database']
+);
+
+
+/*
+var_dump($_SERVER);
+
+die();
+*/
+
 
 $context = array();
 
@@ -20,8 +39,13 @@ function main()
 
         'dash'      => ['Dash', 'Dash.php'],
         'home'      => ['Dash', 'Dash.php'],
-        'login'     => ['Login', 'Loginout.php'],
-        'logout'    => ['Logout', 'Loginout.php'],
+        
+        'subscribe'      => ['Subscribe', 'News.php'],
+        'subscribe2'      => ['Subscribe2', 'News.php'],
+        
+        'thanks'      => ['Thanks', 'News.php'],
+        
+        'unsubscribe'    => ['Unsubscribe', 'News.php'],
     );
 
     
@@ -55,7 +79,8 @@ main_above();
 if (isset($context['template']))
 {
     
-    $context['template']();
+    $f = 'template_' . $context['template'];
+    $f();
 
 }
 

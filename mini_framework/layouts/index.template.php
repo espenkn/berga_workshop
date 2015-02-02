@@ -12,17 +12,60 @@ function main_above()
             <meta charset="utf-8" />
             <title>',( isset($context['page_title']) ?  $context['page_title'] : 'Velkommen' ),'</title>
         
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="vendor/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+            <!-- Latest compiled and minified CSS -->
+            <link rel="stylesheet" href="vendor/bootstrap-3.3.2-dist/css/bootstrap.min.css">
+            
+            <!-- Optional theme -->
+            <link rel="stylesheet" href="vendor/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
+            
+             <!-- Latest compiled and minified JavaScript -->
+            <script src="vendor/jquery/jquery-2.1.3.min.js"></script>
+            
+            <!-- Latest compiled and minified JavaScript -->
+            <script src="vendor/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
         
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="vendor/bootstrap-3.3.2-dist/css/bootstrap-theme.min.css">
         
-        <!-- Latest compiled and minified JavaScript -->
-        <script src="vendor/bootstrap-3.3.2-dist/js/bootstrap.min.js"></script>
+            <style>
+            
+                body {
+                    padding-top: 50px;
+                }
+                
+                .starter-template {
+                    padding: 40px 15px;
+                    text-align: center;
+                }
         
+            </style>
+            
         </head>
         <body>
+        
+        
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="container">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Project name</a>
+                </div>
+                <div id="navbar" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav">
+                        <li class="active"><a href="/">Home</a></li>
+                        <li><a href="?action=subscribe">Subscribe</a></li>
+                    </ul>
+                </div><!--/.nav-collapse -->
+            </div>
+        </nav>
+        
+        <div class="container">
+        
+            
+        
     ';
     
     
@@ -37,9 +80,26 @@ function main_belove()
     
     
     echo '
-            <footer>
-                <p>Berga Workshop</p>
+    
+        </div><!-- /.container -->
+    
+        <div class="container">
+            <footer class="footer">
+                
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">Berga Workshop</h3>
+                    </div>
+                    <div class="panel-body">
+                
+                        <p>Dette er morro</p>
+                    </div>
+                </div>
+                
             </footer>
+            
+            </div>
+            
         </body>
     </html>
     ';
