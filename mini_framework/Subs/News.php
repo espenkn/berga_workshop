@@ -37,15 +37,31 @@ function Subscribe2()
 {
     global $context, $app_path, $db;
     
+    
+    
+    $_SESSION['subscriber_errors'] = [];
+    
+    
     //var_dump($_POST);
     
     if (!isset($_POST['news_subscribe'])) {
-        header('Location: ' . $_SERVER["SCRIPT_NAME"]);
+        redirect($app_url . '?action=subscribe');
     }
     
     
-    if(!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))  {
-        header('Location: ' . $_SERVER["SCRIPT_NAME"] );
+    if (!isset($_POST['email']) || empty($_POST['email'])) {
+        
+        array_push($_SESSION['subscriber_errors'], 'Eposten var tom');
+        
+        redirect($app_url . '?action=subscribe');
+    }
+    
+    
+    if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL))  {
+        
+        array_push($_SESSION['subscriber_errors'], 'Eposten var ugyldig');
+        
+        redirect($app_url . '?action=subscribe');
     }
     
     // alt ok
@@ -58,7 +74,11 @@ function Subscribe2()
     
     
     if ($result->num_rows > 0) {
-        die('Epost er registert fra før');
+        
+        array_push($_SESSION['subscriber_errors'], 'Epost er registert fra før');
+     
+        redirect($app_url . '?action=subscribe');
+        
     }
     
     
@@ -71,9 +91,13 @@ function Subscribe2()
     
         
     if ($db->affected_rows > 0) {
-        die('Epost ble registert');
+        
+        redirect($app_url . '?action=thanks');
+        
     } else {
-        die('Noe gikk galt');
+        array_push($_SESSION['subscriber_errors'], 'Noe gikk galt');
+     
+        redirect($app_url . '?action=subscribe');
     }
     
     
@@ -82,7 +106,19 @@ function Subscribe2()
 
 
 
+function Thanks()
+{
+    
+    global $context, $app_path;
+    
+    
+    $context['page_title'] = 'Takk skal du ha';
+    
 
+    require_once($app_path . '/layouts/news.template.php');
+  
+    $context['template'] = 'thanks';
+}
 
 
 

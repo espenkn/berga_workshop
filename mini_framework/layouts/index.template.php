@@ -3,7 +3,7 @@
 
 function main_above()
 {
-    global $context;
+    global $context, $current_action;
     
     echo '
     <!DOCTYPE html>
@@ -51,12 +51,12 @@ function main_above()
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="#">Project name</a>
+                    <a class="navbar-brand" href="?action=dash">Berga Workshop</a>
                 </div>
                 <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="?action=subscribe">Subscribe</a></li>
+                        <li ',( $current_action == 'home' ? 'class="active"' : ''),'><a href="?action=home">Home</a></li>
+                        <li ',( $current_action == 'subscribe' ? 'class="active"' : ''),'><a href="?action=subscribe">Subscribe</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

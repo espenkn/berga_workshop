@@ -13,6 +13,23 @@ function template_subscribe()
     echo '<p>Venligst abobner på vårt nyhetsbrev</p>';
     
     
+    if (isset($_SESSION['subscriber_errors']) && !empty($_SESSION['subscriber_errors']))
+    {
+        
+        foreach($_SESSION['subscriber_errors'] as $error)
+        {
+            echo '
+            <div class="alert alert-danger" role="alert">
+                <p>',$error,'</p>
+            </div>';
+        }
+        
+        //$_SESSION['subscriber_errors'] = [];
+    
+    }
+    
+    
+    
     echo '
     <form action="?action=subscribe2" method="post" style="margin-bottom: 2rem">
         <div class="form-group">
